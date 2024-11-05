@@ -10,7 +10,6 @@ part 'spaceship_state.dart';
 
 class SpaceshipBloc extends Bloc<SpaceshipEvent, SpaceshipState> {
   int _pageOffset = 0;
-
   SpaceshipBloc() : super(SpaceshipInitial()) {
     on<SpaceshipEvent>((event, emit) async {
       log(event.toString());
@@ -30,7 +29,6 @@ class SpaceshipBloc extends Bloc<SpaceshipEvent, SpaceshipState> {
 
     add(OnInit());
   }
-
   Future<void> _handleOnInit(Emitter emit) async {
     emit(SpaceshipLoading());
     final r = await QlClient.getSpaceships(0);

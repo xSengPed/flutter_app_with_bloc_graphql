@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tech_x_preparation/views/company/company_screen.dart';
+import 'package:tech_x_preparation/views/counter/counter_view.dart';
 import 'package:tech_x_preparation/views/spaceships/spaceships_view.dart';
 
 class MainScreen extends StatelessWidget {
@@ -55,6 +56,25 @@ class MainScreen extends StatelessWidget {
               ),
             ),
           ),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CounterView(),
+                  ));
+            },
+            child: Card(
+              elevation: 0,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Icon(Icons.rocket, size: 50),
+                  Text('Counter'),
+                ],
+              ),
+            ),
+          )
         ]),
       ),
     );
