@@ -1,11 +1,19 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tech_x_preparation/views/spaceships/bloc/spaceship_bloc.dart';
 import 'package:tech_x_preparation/views/spaceships/widgets/details_tile.dart';
 
-class SpaceshipView extends StatelessWidget {
+class SpaceshipView extends StatefulWidget {
   const SpaceshipView({super.key});
 
+  @override
+  State<SpaceshipView> createState() => _SpaceshipViewState();
+}
+
+class _SpaceshipViewState extends State<SpaceshipView> {
+  int pageIndex = 1;
   @override
   Widget build(BuildContext context) {
     SpaceshipBloc bloc = BlocProvider.of<SpaceshipBloc>(context);
@@ -55,20 +63,33 @@ class SpaceshipView extends StatelessWidget {
                 children: [
                   IconButton(
                       onPressed: () {
-                        bloc.add(OnBack());
+                        log("${bloc.state}");
+
+                        if (bloc.state is SpaceshipLoading) {
+                          return;
+                        }
+
+                        if (pageIndex > 1) {
+                          bloc.add(OnBack());
+                          setState(() {
+                            pageIndex--;
+                          });
+                        }
+                        return;
                       },
                       icon: const Icon(Icons.arrow_back_ios)),
-                  BlocBuilder<SpaceshipBloc, SpaceshipState>(
-                      builder: (context, state) {
-                        if (state is SpaceshipLoaded) {
-                          return Text("${state.pageOffset}");
-                        }
-                        return Container();
-                      },
-                      bloc: bloc),
+                  Text("Page $pageIndex",
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.bold)),
                   IconButton(
                       onPressed: () {
+                        if (bloc.state is SpaceshipLoading) {
+                          return;
+                        }
                         bloc.add(OnForward());
+                        setState(() {
+                          pageIndex++;
+                        });
                       },
                       icon: const Icon(Icons.arrow_forward_ios)),
                 ],

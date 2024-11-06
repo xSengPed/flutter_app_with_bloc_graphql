@@ -23,6 +23,7 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
 
   void _handleOnIncrement(Emitter emit) {
     count++;
+
     emit(CounterCurrent(count));
   }
 
@@ -34,7 +35,6 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
   }
 
   void _handleOnReset(Emitter emit) {
-    count = 0;
-    emit(CounterCurrent(count));
+    emit(CounterInitial(value: 0));
   }
 }

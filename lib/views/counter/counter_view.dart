@@ -23,14 +23,16 @@ class CounterView extends StatelessWidget {
                   if (state is CounterInitial) {
                     return Center(
                         child: Text(
-                      "${state.value}",
-                      style: const TextStyle(fontSize: 24),
+                      "$state\n${state.value}",
+                      style: const TextStyle(
+                        fontSize: 24,
+                      ),
                     ));
                   }
                   if (state is CounterCurrent) {
                     return Center(
                         child: Text(
-                      "${state.value}",
+                      "$state\n${state.value}",
                       style: const TextStyle(fontSize: 24),
                     ));
                   } else {

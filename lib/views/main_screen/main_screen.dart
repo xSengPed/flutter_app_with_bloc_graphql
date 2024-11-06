@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tech_x_preparation/views/company/company_screen.dart';
-import 'package:tech_x_preparation/views/counter/counter_view.dart';
-import 'package:tech_x_preparation/views/spaceships/spaceships_view.dart';
+import 'package:tech_x_preparation/routes/routes.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -20,11 +18,7 @@ class MainScreen extends StatelessWidget {
         child: GridView.count(crossAxisCount: 2, children: [
           InkWell(
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const CompanyScreen(),
-                  ));
+              Navigator.pushNamed(context, ROUTE_COMPANY_SCREEN);
             },
             child: Card(
               elevation: 0,
@@ -39,11 +33,7 @@ class MainScreen extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SpaceshipView(),
-                  ));
+              Navigator.pushNamed(context, ROUTE_SPACESHIP_SCREEN);
             },
             child: Card(
               elevation: 0,
@@ -58,11 +48,7 @@ class MainScreen extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const CounterView(),
-                  ));
+              Navigator.pushNamed(context, ROUTE_COUNTER_SCREEN);
             },
             child: Card(
               elevation: 0,

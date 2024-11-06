@@ -38,6 +38,7 @@ class SpaceshipBloc extends Bloc<SpaceshipEvent, SpaceshipState> {
   Future<void> _handleOnBack(Emitter emit) async {
     if (_pageOffset > 0) {
       _pageOffset--;
+      emit(SpaceshipLoading());
       final r = await QlClient.getSpaceships(_pageOffset);
       emit(SpaceshipLoaded(r, _pageOffset));
     }
