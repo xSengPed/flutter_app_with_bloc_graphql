@@ -19,3 +19,7 @@ samples, guidance on mobile development, and a full API reference.
 
  - Using GraphQL for Api
  - Using BLOC Structure Pattern with Dependencies Injection (DI)
+
+## Update 
+
+ - Add Unit Test for CounterBloc
